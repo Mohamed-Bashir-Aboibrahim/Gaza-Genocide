@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaza Under Attack</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .counter {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #d9534f;
+            margin: 20px 0;
+        }
+        .message {
+            font-size: 1.5em;
+            margin: 20px 0;
+            color: #d9534f;
+        }
+        .sub-message {
+            font-size: 1.2em;
+            margin: 15px 0;
+            line-height: 1.6;
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gaza Genocide</h1>
+        <div class="counter" id="counter">00:00:00:00</div>
+        <div class="message">Gaza is being killed and the world watches in silence</div>
+        
+        <div class="sub-message">
+            Over 40,000 Palestinians killed - most are women and children
+        </div>
+        <div class="sub-message">
+            Hospitals bombed, schools destroyed, families wiped out
+        </div>
+        <div class="sub-message">
+            The world sees the genocide but does nothing
+        </div>
+        <div class="sub-message">
+            Gaza is under siege while governments look away
+        </div>
+        <div class="sub-message">
+            How many more must die before the world acts?
+        </div>
+        
+        <div class="footer">
+            Last updated: <span id="update-time"></span>
+        </div>
+    </div>
+
+    <script>
+        const warStartDate = new Date("2023-10-07T00:00:00");
+        
+        function updateCounter() {
+            const now = new Date();
+            const diff = now - warStartDate;
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById("counter").textContent = 
+                `${days.toString().padStart(2, '0')} days, ${hours.toString().padStart(2, '0')} hours, ${minutes.toString().padStart(2, '0')} minutes, ${seconds.toString().padStart(2, '0')} seconds`;
+            
+            document.getElementById("update-time").textContent = now.toLocaleString();
+        }
+        
+        updateCounter();
+        setInterval(updateCounter, 1000);
+    </script>
+</body>
+</html>
